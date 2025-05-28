@@ -4,12 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:5000/api/users')
-      .then((res) => res.json)
-      .then((data) => console.log(data))
+      .then(res => res.json)
+      .then(data => setUsers(data.users))
   });
 
   return (
@@ -24,16 +24,16 @@ function App() {
       </div>
       <h1>HOLA MUNDITO DE EMANUEL</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <h2>Users</h2>
+          {users.map((user) =>(
+            
+            <p key={user.id}>
+              {user.first_name} {user.last_name}
+            </p>
+            
+          ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
 }
