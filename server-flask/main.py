@@ -17,7 +17,7 @@ def get_users():
 @app.route('/api/fruits')
 def get_users():
     return{
-        'users': ['Fresa', 'Naranja', 'Manzana']
+        'fruits': ['Fresa', 'Naranja', 'Manzana']
     }
 
 if __name__ == '__main__':
